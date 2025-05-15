@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Balonu Patlat Oyunu - Animasyon Dünyası</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="game.js"></script>
+
+    <style>
+        .game-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .game-header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .game-instructions {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .game-instructions h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .game-instructions ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .game-instructions li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .game-instructions li:before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border: 3px solid #4a90e2;
+            border-radius: 15px;
+            margin: 20px 0;
+            background-color: #e0f7fa;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background-color: #ff4081;
+            border-radius: 50% 50% 45% 45%;
+            cursor: pointer;
+            border: 3px solid #c2185b;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .balloon:hover {
+            transform: scale(1.1);
+        }
+
+        .balloon:active {
+            transform: scale(0.9);
+        }
+
+        .game-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        #score-board {
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #timer {
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #start-btn {
+            padding: 15px 40px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #start-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        #start-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .game-over {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .game-over h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .game-over p {
+            font-size: 24px;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        .restart-btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="disney.html">Disney</a>
+        <a href="pixar.html">Pixar</a>
+        <a href="dreamworks.html">DreamWorks</a>
+        <a href="japon.html">Anime</a>
+        <a href="karakterler.html">Karakterler</a>
+        <a href="oneriler.html">Öneriler</a>
+        <a href="gelisim.html">Gelişim</a>
+        <a href="cocuklar.html">Çocuklar İçin</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="oyun.html">Balon Oyunu</a>
+    </nav>
+    
+    <div class="game-page">
+        <div class="game-header">
+            <h1>Balonu Patlat!</h1>
+        </div>
+
+        <div class="game-instructions">
+            <h2>Nasıl Oynanır?</h2>
+            <ul>
+                <li>Oyunu başlatmak için "Oyunu Başlat" butonuna tıkla</li>
+                <li>Ekranda beliren balonları tıklayarak patlat</li>
+                <li>Her patlatılan balon için 1 puan kazan</li>
+                <li>30 saniye içinde en yüksek skoru yapmaya çalış!</li>
+            </ul>
+        </div>
+
+        <div class="game-controls">
+            <button id="start-btn">Oyunu Başlat</button>
+            <div id="score-board">Skor: 0</div>
+            <div id="timer">Süre: 30</div>
+        </div>
+
+        <div id="game-container"></div>
+
+        <div class="game-over">
+            <h2>Oyun Bitti!</h2>
+            <p>Skorun: <span id="final-score">0</span></p>
+            <button class="restart-btn">Tekrar Oyna</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Animasyon Dünyası. Tüm hakları saklıdır.</p>
+        <p>Bu site busra tarafından hazırlanmıştır. İletişim: <a href="mailto:busra@example.com">busra@example.com</a></p>
+        <p>Takip et: 
+            <a href="https://instagram.com/animasyondünyasi" target="_blank">Instagram</a>
+        </p>
+    </footer>
+
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const scoreBoard = document.getElementById('score-board');
+        const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('start-btn');
+        const gameOverScreen = document.querySelector('.game-over');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const restartBtn = document.querySelector('.restart-btn');
+
+        let score = 0;
+        let gameInterval;
+        let timeLeft = 30;
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * (gameContainer.clientWidth - 60) + 'px';
+            balloon.style.top = Math.random() * (gameContainer.clientHeight - 80) + 'px';
+
+            balloon.addEventListener('click', () => {
+                score += 1;
+                scoreBoard.textContent = 'Skor: ' + score;
+                gameContainer.removeChild(balloon);
+            });
+
+            gameContainer.appendChild(balloon);
+
+            setTimeout(() => {
+                if (gameContainer.contains(balloon)) {
+                    gameContainer.removeChild(balloon);
+                }
+            }, 1500);
+        }
+
+        function updateTimer() {
+            timerDisplay.textContent = 'Süre: ' + timeLeft;
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            finalScoreDisplay.textContent = score;
+            gameOverScreen.style.display = 'block';
+            startBtn.disabled = false;
+        }
+
+        function startGame() {
+            score = 0;
+            timeLeft = 30;
+            scoreBoard.textContent = 'Skor: 0';
+            updateTimer();
+            startBtn.disabled = true;
+            gameOverScreen.style.display = 'none';
+
+            gameInterval = setInterval(() => {
+                createBalloon();
+                timeLeft--;
+                updateTimer();
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 700);
+        }
+
+        startBtn.addEventListener('click', startGame);
+        restartBtn.addEventListener('click', startGame);
+    </script>
+</body>
+</html>

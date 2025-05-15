@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Çocuklar İçin - Animasyon Dünyası</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .movie-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .movie-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin: 0.5rem 0;
+        }
+
+        .movie-year {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .movie-studio {
+            display: inline-block;
+            background: #4a90e2;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .category-title {
+            color: #2c3e50;
+            margin: 2rem 0 1rem 2rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .age-badge {
+            display: inline-block;
+            background: #ff6600;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="disney.html">Disney</a>
+        <a href="pixar.html">Pixar</a>
+        <a href="dreamworks.html">DreamWorks</a>
+        <a href="japon.html">Anime</a>
+        <a href="karakterler.html">Karakterler</a>
+        <a href="oneriler.html">Öneriler</a>
+        <a href="gelisim.html">Gelişim</a>
+        <a href="cocuklar.html">Çocuklar İçin</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="oyun.html">Balon Oyunu</a>
+    </nav>
+    
+    <main>
+        <h1>Çocuklar İçin Özel Animasyon Filmleri</h1>
+        
+        <h2 class="category-title">3-6 Yaş İçin Filmler</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <img src="img/cars.jpg" alt="Arabalar" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Arabalar <span class="age-badge">3+</span></h2>
+                    <p class="movie-year">2006</p>
+                    <span class="movie-studio">Pixar</span>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="img/moana.jpg" alt="Moana" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Moana <span class="age-badge">3+</span></h2>
+                    <p class="movie-year">2016</p>
+                    <span class="movie-studio">Disney</span>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="img/toy.jpg" alt="Oyuncak Hikayesi" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Oyuncak Hikayesi <span class="age-badge">3+</span></h2>
+                    <p class="movie-year">1995</p>
+                    <span class="movie-studio">Pixar</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">7-12 Yaş İçin Filmler</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <img src="img/frozen.jpg" alt="Karlar Ülkesi" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Karlar Ülkesi <span class="age-badge">7+</span></h2>
+                    <p class="movie-year">2013</p>
+                    <span class="movie-studio">Disney</span>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="img/kungfupanda.jpg" alt="Kung Fu Panda" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Kung Fu Panda <span class="age-badge">7+</span></h2>
+                    <p class="movie-year">2008</p>
+                    <span class="movie-studio">DreamWorks</span>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="img/ponyo.jpg" alt="Ponyo" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Ponyo <span class="age-badge">7+</span></h2>
+                    <p class="movie-year">2008</p>
+                    <span class="movie-studio">Studio Ghibli</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">Eğitici Animasyonlar</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <img src="img/tersyüz.jpg" alt="Ters Yüz" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Ters Yüz <span class="age-badge">8+</span></h2>
+                    <p class="movie-year">2015</p>
+                    <span class="movie-studio">Pixar</span>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="img/coco.jpg" alt="Coco" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Coco <span class="age-badge">8+</span></h2>
+                    <p class="movie-year">2017</p>
+                    <span class="movie-studio">Pixar</span>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="img/zootopia.jpg" alt="Zootopia" class="movie-poster">
+                <div class="movie-info">
+                    <h2 class="movie-title">Zootopia <span class="age-badge">8+</span></h2>
+                    <p class="movie-year">2016</p>
+                    <span class="movie-studio">Disney</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Animasyon Dünyası. Tüm hakları saklıdır.</p>
+        <p>Bu site Büşra tarafından hazırlanmıştır. İletişim: <a href="mailto:busra@example.com">busra@example.com</a></p>
+ 
+    </footer>
+</body>
+</html>
